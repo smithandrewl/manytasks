@@ -3,13 +3,14 @@ import {RoutingService} from "../routing.service";
 import {LoginCheck} from "../login-check.directive";
 import {AuthenticationService} from "../authentication.service";
 import {SiteHeadingComponent} from "../site-heading/site-heading.component";
+import {AppCreateTaskComponent} from "../app-create-task/app-create-task.component";
 
 @Component({
   moduleId: module.id,
   selector: 'app-home',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css'],
-  directives: [LoginCheck, SiteHeadingComponent],
+  directives: [LoginCheck, SiteHeadingComponent, AppCreateTaskComponent],
   providers: [AuthenticationService]
 
 })

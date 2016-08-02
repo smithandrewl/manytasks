@@ -1,0 +1,36 @@
+<h1 class="header">Create Task</h1>
+<hr/>
+
+<form>
+
+
+    <br/>
+
+    <form id="form-add-task">
+        <div class="input-group">
+            <label for="inputTitle" class="">Title:</label>
+            <input [(ngModel)]="title" type="text" id="inputTitle" class="form-control" placeholder="Title"
+                   required autofocus>
+        </div>
+
+        <br/>
+        <div class="input-group">
+            <label for="descriptionEditor" class="">Description:</label>
+            <textarea name="descriptionEditor" id="descriptionEditor" rows="10" cols="80" required="true"></textarea>
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="col-md-4">
+            <button id="btnSubmit" class="btn btn-lg btn-primary btn-block" type="submit" (click)="add()">Add</button>
+                </div>
+            <div class="col-md-4">
+        <button id="btnCancel" class="btn btn-lg btn-warning btn-block" type="submit">Cancel</button>
+                </div>
+
+        </div>
+        <br/>
+    </form>
+
+
+</form>
