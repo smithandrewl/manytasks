@@ -5,6 +5,7 @@ DROP TABLE AppSection;
 DROP TABLE AppEventType;
 DROP TABLE AppEventSeverity;
 DROP TABLE auth;
+DROP TABLE Task;
 
 CREATE TABLE auth
 (
@@ -67,6 +68,14 @@ CREATE TABLE AppEvent
   CONSTRAINT app_event_fkey_app_action         FOREIGN KEY (appaction)       REFERENCES AppAction        (appActionId),
   CONSTRAINT app_event_fkey_app_action_result  FOREIGN KEY (appactionResult) REFERENCES AppActionResult  (appActionResultId),
   CONSTRAINT app_event_fkey_app_event_severity FOREIGN KEY (appeventseverity)     REFERENCES AppEventSeverity (appEventSeverityId)
+);
+
+CREATE TABLE Task(
+  taskId SERIAL,
+  userId INT NOT NULL,
+  title VARCHAR(1000) NOT NULL,
+  description TEXT NOT NULL,
+  CONSTRAINT task_pkey PRIMARY KEY (taskId)
 );
 
 INSERT INTO Auth (username, hash, isadmin) VALUES ('admin', '$2a$04$5AcVtq0UBOMlcsFXlA3oiO9AG2P2Ex9SAePlSvuBC0t9csI/ZrG7C', TRUE);

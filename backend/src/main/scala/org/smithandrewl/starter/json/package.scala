@@ -131,6 +131,24 @@ package object json {
         Json.fromValues(a.map(_.asJson))
       }
     }
+
+    implicit val taskEncoder = new Encoder[Task] {
+      override def apply(a: Task): Json = {
+        JsonObject.fromMap{
+          Map(
+            "UserId" -> Encoder.encodeInt(a.userId),
+            "Title" -> Encoder.encodeString(a.title),
+            "Description" -> Encoder.encodeString(a.description)
+          )
+        }.asJson
+      }
+    }
+
+    implicit val taskSeqEncoder = new Encoder[Seq[Task]] {
+      override def apply(a: Seq[Task]): Json = {
+        Json.fromValues(a.map(_.asJson))
+      }
+    }
   }
 
 }

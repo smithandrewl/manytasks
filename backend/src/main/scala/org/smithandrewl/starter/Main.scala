@@ -12,10 +12,10 @@ import io.circe.syntax._
 import io.finch._
 import org.jboss.netty.handler.codec.http.HttpHeaders._
 import org.smithandrewl.starter.auth.{AuthFailure, AuthSuccess, AuthenticationResult}
-import org.smithandrewl.starter.db.dao.{AppEventDAO, AuthDAO}
+import org.smithandrewl.starter.db.dao.{AppEventDAO, AuthDAO, TaskDAO}
 import org.smithandrewl.starter.filter.AuthenticationFilter
 import org.smithandrewl.starter.json._
-import org.smithandrewl.starter.model.{AppEvent, Auth}
+import org.smithandrewl.starter.model.{AppEvent, Auth, Task}
 import org.smithandrewl.starter.util.Routes
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -31,11 +31,26 @@ object Main extends TwitterServer  {
     */
   def main() {
 
+    val listTasks: Endpoint[String] = get(Routes.ListTasks) {
+      () => {
+        var result = Bijection[Future[Seq[Task]], TwitterFuture[Seq[Task]]](TaskDAO.listTasks())
+
+        result.map {
+          r => Ok(r.asJson(JsonCodecs.taskSeqEncoder).toString())
+        }
+      }
+    }
     val createTask: Endpoint[String] = get(Routes.CreateTask :: string :: string :: header(Names.AUTHORIZATION)) {
       (title: String, description: String, jwt: String) => {
         var jwtPayload = auth.extractPayload(jwt)
 
-        Ok("")
+        var result = Bijection[Future[Int], TwitterFuture[Int]](TaskDAO.insertTask(jwtPayload.userId, title, description))
+
+        Await.result(AppEventDAO.logUserCreateTask(jwtPayload.userId), Duration.Inf)
+
+        result.map {
+          r => Ok("")
+        }
       }
     }
     /**
@@ -201,7 +216,7 @@ object Main extends TwitterServer  {
       allowsHeaders = _ => Some(Seq(Names.ACCEPT, Names.AUTHORIZATION, Names.ACCESS_CONTROL_ALLOW_CREDENTIALS))
     )
 
-    val service     = (api :+: authenticate :+: verifyJWT :+: listEvents :+: clearEvents :+: deleteUser :+: createUser).toService
+    val service     = (api :+: authenticate :+: verifyJWT :+: listEvents :+: clearEvents :+: deleteUser :+: createUser :+: createTask :+: listTasks).toService
     val corsService = new Cors.HttpFilter(policy).andThen(new AuthenticationFilter().andThen(service))
     val server      =  Http.server.configured(Stats(statsReceiver)).serve(":8080",  corsService )
 

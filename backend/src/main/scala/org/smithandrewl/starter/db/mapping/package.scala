@@ -15,6 +15,7 @@ import slick.driver.PostgresDriver.api._
 package object mapping {
   val users  = TableQuery[AuthTable]
   val events = TableQuery[EventTable]
+  val tasks = TableQuery[TaskTable]
 
   /********* Enum mappings *******************************************/
   // Source for mapping method: http://stackoverflow.com/a/31717056
@@ -24,4 +25,5 @@ package object mapping {
   implicit val appActionMapper     = MappedColumnType.base[AppAction, Int]       (_.id, AppAction.apply)
   implicit val eventSeverityMapper = MappedColumnType.base[AppEventSeverity, Int](_.id, AppEventSeverity.apply)
   implicit val actionResultMapper  = MappedColumnType.base[AppActionResult, Int] (_.id, AppActionResult.apply)
+
 }
