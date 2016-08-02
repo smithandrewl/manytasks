@@ -29,4 +29,7 @@ export class HomeComponent implements OnInit {
     this.routingService.changeRoute('/createTask');
   }
 
+  listTasks() {
+    this.routingService.changeRoute('/listTasks');
+  }
 }

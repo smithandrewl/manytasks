@@ -50,6 +50,7 @@ const barrels: string[] = [
   'app/admin-create-user',
   'app/site-heading',
   'app/app-create-task',
+  'app/task-list',
   /** @cli-barrel */
 ];
 

@@ -15,6 +15,10 @@ export class DataService {
     return this.baseUrl + endpoint;
   }
 
+  getTasks(): Observable<Response> {
+    return this.http.get(this.getUrl("listtasks"), {headers: this.getHeaders()});
+  }
+
   getEvents(): Observable<Response> {
     return this.http.get(this.getUrl("events"), {headers: this.getHeaders()});
   }
