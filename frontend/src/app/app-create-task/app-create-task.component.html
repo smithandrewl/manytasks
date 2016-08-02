@@ -6,7 +6,7 @@
             <div class="panel-title">Create Task</div>
         </div>
         <div class="panel-body">
-            <form id="form-add-task">
+            <form id="form-add-task" submit="return false;">
                 <div class="input-group">
                     <label for="inputTitle" class="">Title:</label>
                     <input [(ngModel)]="title" type="text" id="inputTitle" class="form-control" placeholder="Title"
@@ -25,7 +25,7 @@
                         <button id="btnSubmit" class="btn btn-lg btn-primary btn-block" type="submit" (click)="add()">Add</button>
                     </div>
                     <div class="col-md-4">
-                        <button id="btnCancel" class="btn btn-lg btn-warning btn-block"  (click)="cancel()">Cancel</button>
+                        <button id="btnCancel" class="btn btn-lg btn-warning btn-block" type="reset" (click)="cancel()">Cancel</button>
                     </div>
 
                 </div>
