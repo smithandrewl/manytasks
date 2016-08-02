@@ -31,6 +31,13 @@ object Main extends TwitterServer  {
     */
   def main() {
 
+    val createTask: Endpoint[String] = get(Routes.CreateTask :: string :: string :: header(Names.AUTHORIZATION)) {
+      (title: String, description: String, jwt: String) => {
+        var jwtPayload = auth.extractPayload(jwt)
+
+        Ok("")
+      }
+    }
     /**
       * The finch endpoint handling user deletion.
       *

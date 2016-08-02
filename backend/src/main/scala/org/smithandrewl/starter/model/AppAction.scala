@@ -35,7 +35,12 @@ object AppAction extends Enumeration {
 
 
   /**
-    * Represents the actioin of creating a user account.
+    * Represents the action of creating a user account.
     */
   val CreateUser    = Value(6)
+
+  /**
+    * Represents the action of creating a task.
+    */
+  val CreateTask    = Value(7)
 }

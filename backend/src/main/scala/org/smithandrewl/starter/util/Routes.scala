@@ -10,4 +10,5 @@ object Routes {
   val ClearEventLog = "cleareventlog"
   val DeleteUser    = "deleteuser"
   val CreateUser    = "createuser"
+  val CreateTask    = "createtask"
 }

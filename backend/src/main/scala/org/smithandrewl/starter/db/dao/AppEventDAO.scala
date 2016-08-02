@@ -21,6 +21,16 @@ import scala.concurrent.{Awaitable, ExecutionContext, Future}
   * The data access object for [[org.smithandrewl.starter.model.AppEvent AppEvent]] instances.
   */
 object AppEventDAO {
+
+  /**
+    * Logs the creation of a task.
+    *
+    * @param userId The id of the user
+    * @return The result of the insert
+    */
+  def logUserCreateTask(userId: Int): EventInsertFuture = {
+    logEvent(userId, AppEventType.App, AppSection.Tasks, AppAction.CreateTask, AppActionResult.ActionNormal, AppEventSeverity.Minor)
+  }
   /**
     * Logs the creation of a new user.
     *

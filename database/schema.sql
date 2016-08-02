@@ -81,6 +81,7 @@ INSERT INTO AppEventType (label) VALUES ('APP');
 
 INSERT INTO AppSection (label) VALUES ('LOGIN');
 INSERT INTO AppSection (label) VALUES ('ADMIN');
+INSERT INTO AppSection (label) VALUES ('TASKS');
 
 INSERT INTO AppAction (label) VALUES ('LIST_USERS');
 INSERT INTO AppAction (label) VALUES ('USER_LOGIN');
@@ -88,6 +89,7 @@ INSERT INTO AppAction (label) VALUES ('USER_LOGOUT');
 INSERT INTO AppAction (label) VALUES ('CLEAR_EVENT_LOG');
 INSERT INTO AppAction (label) VALUES ('DELETE_USER');
 INSERT INTO AppAction (label) VALUES ('CREATE_USER');
+INSERT INTO AppAction (label) VALUES ('CREATE_TASK');
 
 INSERT INTO AppActionResult (label) VALUES ('ACTION_SUCCESS');
 INSERT INTO AppActionResult (label) VALUES ('ACTION_FAILURE');

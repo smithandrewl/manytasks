@@ -8,4 +8,5 @@ object AppSection extends Enumeration {
 
   val Login = Value(1)
   val Admin = Value(2)
+  val Tasks = Value(3)
 }
