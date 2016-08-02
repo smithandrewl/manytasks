@@ -25,4 +25,8 @@ export class HomeComponent implements OnInit {
     this.routingService.changeRoute('');
   }
 
+  createTask() {
+    this.routingService.changeRoute('/createTask');
+  }
+
 }
