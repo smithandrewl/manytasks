@@ -3,6 +3,7 @@ import {RoutingService} from "../routing.service";
 import {SiteHeadingComponent} from "../site-heading/site-heading.component";
 import {DataService} from "../data-service.service";
 import {Response} from "@angular/http";
+import {AuthenticationService} from "../authentication.service";
 
 @Component({
   moduleId: module.id,
@@ -10,13 +11,13 @@ import {Response} from "@angular/http";
   templateUrl: 'app-create-task.component.html',
   styleUrls: ['app-create-task.component.css'],
   directives: [SiteHeadingComponent],
-  providers: [DataService]
+  providers: [DataService, AuthenticationService]
 })
 export class AppCreateTaskComponent implements OnInit {
   private ckeditor: any;
   private title: String;
 
-  constructor(private dataService: DataService, private routingService: RoutingService) { }
+  constructor(private authService: AuthenticationService, private dataService: DataService, private routingService: RoutingService) { }
 
   ngOnInit() {
 
@@ -29,8 +30,10 @@ export class AppCreateTaskComponent implements OnInit {
   }
 
   add() {
+    var jwtToken = this.authService.getJwt();
+
     var description: string = this.ckeditor.instances.descriptionEditor.getData();
-    this.dataService.createEvent(this.title, description).subscribe(this.onTaskCreated);
+    this.dataService.createEvent(jwtToken.userId, this.title, description).subscribe(this.onTaskCreated);
   }
 
   cancel() {

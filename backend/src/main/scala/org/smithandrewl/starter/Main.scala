@@ -43,16 +43,15 @@ object Main extends TwitterServer  {
         }
       }
     }
-    val createTask: Endpoint[String] = post(Routes.CreateTask :: body.as[String] :: header(Names.AUTHORIZATION)) {
-      (body: String, jwt: String) => {
+    val createTask: Endpoint[String] = post(Routes.CreateTask ? Endpoint.derive[Task].fromParams :: header(Names.AUTHORIZATION)) {
+      (task:Task, jwt: String) => {
         var jwtPayload = auth.extractPayload(jwt)
 
-        val parts = body.split(";")
-        var result = Bijection[Future[Int], TwitterFuture[Int]](TaskDAO.insertTask(jwtPayload.userId, parts(0), parts(1)))
+        var result = Bijection[Future[Int], TwitterFuture[Int]](TaskDAO.insertTask(jwtPayload.userId, task.title, task.description))
 
         Await.result(AppEventDAO.logUserCreateTask(jwtPayload.userId), Duration.Inf)
 
-        log.debug(s"User with UID = ${jwtPayload.userId} just created a task with title = ${parts(0)}")
+        log.debug(s"User with UID = ${jwtPayload.userId} just created a task with title = ${task.title}")
 
         result.map {
           r => Ok("")
@@ -219,7 +218,7 @@ object Main extends TwitterServer  {
     val policy: Cors.Policy = Cors.Policy(
       allowsOrigin  = _ => Some("*"),
       allowsMethods = _ => Some(Seq("GET", "POST")),
-      allowsHeaders = _ => Some(Seq(Names.ACCEPT, Names.AUTHORIZATION, Names.ACCESS_CONTROL_ALLOW_CREDENTIALS))
+      allowsHeaders = _ => Some(Seq(Names.ACCEPT, Names.AUTHORIZATION, Names.ACCESS_CONTROL_ALLOW_CREDENTIALS, Names.CONTENT_TYPE))
     )
 
     val service     = (api :+: authenticate :+: verifyJWT :+: listEvents :+: clearEvents :+: deleteUser :+: createUser :+: createTask :+: listTasks).toService

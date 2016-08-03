@@ -49,8 +49,13 @@ export class DataService {
     return this.http.get(this.getUrl("authenticate/" + username + "/" + password));
   }
 
-  createEvent(title:String, description:string): Observable<Response> {
-    return this.http.post(this.getUrl("createtask"), title + ";" + description, {headers: this.getHeaders()});
+  createEvent(userId: number, title:String, description:string): Observable<Response> {
+
+    var h = new Headers();
+    h.append('Authorization', window.localStorage.getItem('jwt'));
+    h.append('Content-Type', 'application/json');
+
+    return this.http.post(this.getUrl("createtask"), "{ \"taskId\" : 0,  \"title\": \"" + title + "\", \"userId\": " + userId + ", \"description\": \"" + description + "\"}", {headers: h});
 
   }
 }

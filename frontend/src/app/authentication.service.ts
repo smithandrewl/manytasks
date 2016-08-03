@@ -4,7 +4,7 @@ import {JwtHelper} from "angular2-jwt";
 @Injectable()
 export class AuthenticationService {
 
-  private getJwt(): any {
+  public getJwt(): any {
     var jwtHelper = new JwtHelper();
     var encodedToken = window.localStorage.getItem('jwt');
     var jwt = jwtHelper.decodeToken(encodedToken);
