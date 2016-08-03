@@ -51,6 +51,7 @@ export class DataService {
 
   createEvent(userId: number, title:String, description:string): Observable<Response> {
 
+    // TODO: use FormData() to encode the body for the post
     var h = new Headers();
     h.append('Authorization', window.localStorage.getItem('jwt'));
     h.append('Content-Type', 'application/json');
