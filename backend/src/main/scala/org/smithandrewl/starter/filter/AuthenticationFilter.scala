@@ -12,7 +12,7 @@ import org.smithandrewl.starter.auth
 class AuthenticationFilter()
     extends Filter[Request, Response, Request, Response] {
 
-  val nonAdminRoutes = Seq("/home")
+  val nonAdminRoutes = Seq("/home", "/listtasks", "/createtask")
 
   def apply(req: Request,
             service: Service[Request, Response]): Future[Response] = {

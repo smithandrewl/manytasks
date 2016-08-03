@@ -11,5 +11,5 @@ object Routes {
   val DeleteUser    = "deleteuser"
   val CreateUser    = "createuser"
   val CreateTask    = "createtask"
-  val ListTasks     = "listtasks/"
+  val ListTasks     = "listtasks"
 }

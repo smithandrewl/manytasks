@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SiteHeadingComponent} from "../site-heading/site-heading.component";
 import {DataService} from "../data-service.service";
 import { Response} from '@angular/http';
+import {RoutingService} from "../routing.service";
 
 @Component({
   moduleId: module.id,
@@ -14,7 +15,7 @@ import { Response} from '@angular/http';
 export class TaskListComponent implements OnInit {
   private taskData: any;
 
-  constructor(private dataService: DataService) { }
+  constructor(private routingService: RoutingService, private dataService: DataService) { }
 
   ngOnInit() {
     this.dataService.getTasks().subscribe(this.onRefresh);
@@ -24,6 +25,10 @@ export class TaskListComponent implements OnInit {
     this.taskData = [];
 
     this.taskData = resp.json();
+  }
+
+  clicked() {
+    this.routingService.changeRoute("/home");
   }
 
 }

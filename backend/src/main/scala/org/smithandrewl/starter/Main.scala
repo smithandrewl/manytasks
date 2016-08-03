@@ -31,22 +31,28 @@ object Main extends TwitterServer  {
     */
   def main() {
 
-    val listTasks: Endpoint[String] = get(Routes.ListTasks) {
-      () => {
+    val listTasks: Endpoint[String] = get(Routes.ListTasks :: header(Names.AUTHORIZATION)) {
+      (jwt: String) => {
+        val jwtPayload = auth.extractPayload(jwt)
         var result = Bijection[Future[Seq[Task]], TwitterFuture[Seq[Task]]](TaskDAO.listTasks())
+
+        log.debug(s"User with UID = ${jwtPayload.userId} just listed all tasks")
 
         result.map {
           r => Ok(r.asJson(JsonCodecs.taskSeqEncoder).toString())
         }
       }
     }
-    val createTask: Endpoint[String] = get(Routes.CreateTask :: string :: string :: header(Names.AUTHORIZATION)) {
-      (title: String, description: String, jwt: String) => {
+    val createTask: Endpoint[String] = post(Routes.CreateTask :: body.as[String] :: header(Names.AUTHORIZATION)) {
+      (body: String, jwt: String) => {
         var jwtPayload = auth.extractPayload(jwt)
 
-        var result = Bijection[Future[Int], TwitterFuture[Int]](TaskDAO.insertTask(jwtPayload.userId, title, description))
+        val parts = body.split(";")
+        var result = Bijection[Future[Int], TwitterFuture[Int]](TaskDAO.insertTask(jwtPayload.userId, parts(0), parts(1)))
 
         Await.result(AppEventDAO.logUserCreateTask(jwtPayload.userId), Duration.Inf)
+
+        log.debug(s"User with UID = ${jwtPayload.userId} just created a task with title = ${parts(0)}")
 
         result.map {
           r => Ok("")
@@ -224,6 +230,4 @@ object Main extends TwitterServer  {
 
     com.twitter.util.Await.ready(server)
   }
-
-
 }

@@ -48,4 +48,9 @@ export class DataService {
   login(username: String, password: String): Observable<Response> {
     return this.http.get(this.getUrl("authenticate/" + username + "/" + password));
   }
+
+  createEvent(title:String, description:string): Observable<Response> {
+    return this.http.post(this.getUrl("createtask"), title + ";" + description, {headers: this.getHeaders()});
+
+  }
 }
