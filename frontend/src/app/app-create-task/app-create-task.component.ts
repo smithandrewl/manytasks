@@ -33,14 +33,19 @@ export class AppCreateTaskComponent implements OnInit {
     var jwtToken = this.authService.getJwt();
 
     var description: string = this.ckeditor.instances.descriptionEditor.getData();
-    this.dataService.createEvent(jwtToken.userId, this.title, description).subscribe(this.onTaskCreated);
+    this.dataService.createEvent(jwtToken.userId, this.title, description, this.onTaskCreated);
+
   }
 
   cancel() {
     this.routingService.changeRoute('/home');
   }
 
-  private onTaskCreated = (response: Response) => {
+  private onTaskCreated = () => {
+
+
+
+
     this.routingService.changeRoute('/home');
   }
 

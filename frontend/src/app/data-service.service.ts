@@ -49,14 +49,23 @@ export class DataService {
     return this.http.get(this.getUrl("authenticate/" + username + "/" + password));
   }
 
-  createEvent(userId: number, title:String, description:string): Observable<Response> {
+  createEvent(userId: number, title:String, description:string, handler: (ProgressEvent)=>any){
+    var data = new FormData();
+    data.append("title", title);
+    data.append("description", description);
+    data.append("taskId", 0);
+    data.append("userId", 0);
 
-    // TODO: use FormData() to encode the body for the post
-    var h = new Headers();
-    h.append('Authorization', window.localStorage.getItem('jwt'));
-    h.append('Content-Type', 'application/json');
 
-    return this.http.post(this.getUrl("createtask"), "{ \"taskId\" : 0,  \"title\": \"" + title + "\", \"userId\": " + userId + ", \"description\": \"" + description + "\"}", {headers: h});
+    var xhr = new XMLHttpRequest();
+    //xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", handler);
+    xhr.open("POST", this.getUrl("createtask"));
+    xhr.setRequestHeader("Authorization", window.localStorage.getItem('jwt'));
+    xhr.send(data);
+
+
 
   }
 }

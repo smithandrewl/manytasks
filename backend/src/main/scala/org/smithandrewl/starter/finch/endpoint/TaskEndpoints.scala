@@ -52,5 +52,6 @@ object TaskEndpoints {
     }
   }
 
+  val endpoints = listTasks :+: createTask
 }
 

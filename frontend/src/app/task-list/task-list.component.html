@@ -24,7 +24,7 @@
             <tr *ngFor="let task of taskData" >
               <td>{{task.UserId}}</td>
               <td>{{task.Title}}</td>
-              <td>{{task.Description}}</td>
+              <td [innerHTML] = "task.Description"></td>
             </tr>
           </table>
         </div>
