@@ -1,4 +1,4 @@
-package org.smithandrewl.starter.filter
+package org.smithandrewl.starter.finch.filter
 
 import com.twitter.finagle.http.{Fields, Request, Response}
 import com.twitter.finagle.{Filter, Service}
