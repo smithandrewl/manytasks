@@ -7,6 +7,8 @@ import { provideRouter } from '@angular/router';
 import { AppRoutes } from './app/app.routes';
 import {AppWindowComponent} from './app/app-window';
 
+environment.production = true;
+
 if (environment.production) {
   enableProdMode();
 }
