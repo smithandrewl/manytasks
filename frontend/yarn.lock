@@ -243,7 +243,7 @@ amdefine@>=0.0.4:
   resolved "http://npm.wwinc.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
-angular-cli@^1.0.0-beta.5:
+angular-cli@^1.0.0-beta.15:
   version "1.0.0-beta.28.3"
   resolved "http://npm.wwinc.com/angular-cli/-/angular-cli-1.0.0-beta.28.3.tgz#9751d7414eaf8e0b714b2461a585bfda9713416f"
   integrity sha1-l1HXQU6vjgtxSyRhpYW/2pcTQW8=
