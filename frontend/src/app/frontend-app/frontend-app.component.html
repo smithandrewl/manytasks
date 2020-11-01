@@ -1,0 +1,31 @@
+<div>
+    <span>
+        <div class="panel panel-primary login-panel">
+          <div class="panel-heading">
+           <div class="panel-title">Please sign in</div>
+            </div>
+          <div class="panel-body">
+        <form id="login-form" class="form-signin" >
+      
+      
+          <div class="input-group">
+            <label for="inputUsername" class="sr-only">Email address</label>
+            <span class="input-group-addon" ><div class="mdi mdi-account"></div></span>
+            <input  type="text" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+          </div>
+      
+          <br/>
+          <div class="input-group">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <span class="input-group-addon"><div class="mdi mdi-key"></div></span>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+          </div>
+          <br/>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+          <br/>
+          <div *ngIf="false" class="alert alert-danger">response</div>
+        </form>
+            </div>
+          </div>
+      </span>
+</div>

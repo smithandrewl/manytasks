@@ -1,20 +1,12 @@
-import { bootstrap } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
-import { LoginAppComponent, environment } from './app/';
-import { LoginScreenComponent} from './app/login-screen/';
-import {HTTP_PROVIDERS, Http} from '@angular/http';
-import { provideRouter } from '@angular/router';
-import { AppRoutes } from './app/app.routes';
-import {AppWindowComponent} from './app/app-window';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-environment.production = true;
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
 }
 
-bootstrap(AppWindowComponent, [
-  provideRouter(AppRoutes),
-  HTTP_PROVIDERS
-]);
-
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));

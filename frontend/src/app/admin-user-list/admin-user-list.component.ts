@@ -1,44 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
-import {DataService} from "../data-service.service";
-import {RoutingService} from "../routing.service";
-import {CORE_DIRECTIVES} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-admin-user-list',
-  templateUrl: 'admin-user-list.component.html',
-  styleUrls: ['admin-user-list.component.css'],
-  providers: [DataService]
+  templateUrl: './admin-user-list.component.html',
+  styleUrls: ['./admin-user-list.component.css']
 })
 export class AdminUserListComponent implements OnInit {
-  private userData: any;
 
-  constructor(private dataService: DataService, private routingService:RoutingService) {
-    this.userData = [];
+  constructor() { }
+
+  ngOnInit(): void {
   }
-
-  ngOnInit() {
-    this.dataService.getUsers().subscribe(this.users);
-  }
-
-  private users = (response: Response) => {
-    this.userData = response.json();
-  };
-
-  private onDelete = (resp: Response) => {
-    this.userData = [];
-    this.dataService.getUsers().subscribe(this.users);
-  }
-
-  private delete(userId: number)  {
-    this.dataService.deleteUser(userId).subscribe(this.onDelete);
-  }
-
-  createUser() {
-    this.routingService.changeRoute('/create-user');
-  }
-
-
 
 }
