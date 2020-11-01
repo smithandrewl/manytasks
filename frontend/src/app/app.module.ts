@@ -7,6 +7,7 @@ import { AppSiteHeadingComponent } from './app-site-heading/app-site-heading.com
 import { FrontendAppComponent } from './frontend-app/frontend-app.component';
 import { HomeComponent } from './home/home.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
+import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CreateTaskComponent } from './create-task/create-task.component';
     AppSiteHeadingComponent,
     FrontendAppComponent,
     HomeComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    AdminUserListComponent
   ],
   imports: [
     BrowserModule,
