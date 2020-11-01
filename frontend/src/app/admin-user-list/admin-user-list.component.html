@@ -13,14 +13,14 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="delete(userId)">Delete</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" >Delete</button>
         </div>
       </div>
     </div>
   </div>
   
   <div class="panel panel-default">
-    <div class="panel-heading">Users <button class="btn btn-success btn-xs pull-right" (click)="createUser()">Add a User</button></div>
+    <div class="panel-heading">Users <button class="btn btn-success btn-xs pull-right" >Add a User</button></div>
     <div class="panel-body">
   
   
@@ -33,10 +33,10 @@
           <th><i class="mdi mdi-delete"></i>&nbsp; Delete</th>
         </tr>
   
-        <tr *ngFor="let user of userData">
-          <td>{{user.username}}</td>
-          <td class="mdi" [class.mdi-checkbox-marked]="user.isAdmin" [class.mdi-checkbox-blank]="!user.isAdmin"></td>
-          <td><btn class="btn btn-xs btn-danger" data-toggle="modal" data-target=".bs-warning" (click)="userId= user.userId">X</btn></td>
+        <tr>
+          <td>user.username</td>
+          <td class="mdi"  class="mdi-checkbox-blank"></td>
+          <td><button class="btn btn-xs btn-danger" data-toggle="modal" data-target=".bs-warning" >X</button></td>
         </tr>
       </table>
     </div>

@@ -8,6 +8,8 @@ import { FrontendAppComponent } from './frontend-app/frontend-app.component';
 import { HomeComponent } from './home/home.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { EventListComponent } from './event-list/event-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { AdminUserListComponent } from './admin-user-list/admin-user-list.compon
     FrontendAppComponent,
     HomeComponent,
     CreateTaskComponent,
-    AdminUserListComponent
+    AdminUserListComponent,
+    AdminDashboardComponent,
+    EventListComponent
   ],
   imports: [
     BrowserModule,
