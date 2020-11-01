@@ -8,7 +8,7 @@
             <form id="form-add-task" submit="return false;">
                 <div class="input-group">
                     <label for="inputTitle" class="">Title:</label>
-                    <input [(ngModel)]="title" type="text" id="inputTitle" class="form-control" placeholder="Title"
+                    <input  type="text" id="inputTitle" class="form-control" placeholder="Title"
                            required autofocus>
                 </div>
 
@@ -21,10 +21,10 @@
 
                 <div class="row">
                     <div class="col-md-4">
-                        <button id="btnSubmit" class="btn btn-lg btn-primary btn-block"  type="button" (click)="add()">Add</button>
+                        <button id="btnSubmit" class="btn btn-lg btn-primary btn-block"  type="button" >Add</button>
                     </div>
                     <div class="col-md-4">
-                        <button id="btnCancel" class="btn btn-lg btn-warning btn-block" type="reset" (click)="cancel()">Cancel</button>
+                        <button id="btnCancel" class="btn btn-lg btn-warning btn-block" type="reset" >Cancel</button>
                     </div>
 
                 </div>
