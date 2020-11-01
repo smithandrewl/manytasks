@@ -11,6 +11,7 @@ import { AdminUserListComponent } from './admin-user-list/admin-user-list.compon
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { EventListComponent } from './event-list/event-list.component';
 import { TaskListComponent } from './task-list/task-list.component';
+import { AdminCreateUserComponent } from './admin-create-user/admin-create-user.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TaskListComponent } from './task-list/task-list.component';
     AdminUserListComponent,
     AdminDashboardComponent,
     EventListComponent,
-    TaskListComponent
+    TaskListComponent,
+    AdminCreateUserComponent
   ],
   imports: [
     BrowserModule,
