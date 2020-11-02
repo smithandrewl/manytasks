@@ -1,12 +1,14 @@
 <template>
   <v-app>
     <v-main>
+      <v-container>
       <login/>
       <home/>
       <create-task/>
       <list-tasks/>
       <admin-dashboard/>
       <add-user/>
+      </v-container>
     </v-main>
   </v-app>
 </template>
