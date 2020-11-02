@@ -2,12 +2,12 @@
   <v-app>
     <v-main>
       <v-container>
-      <login/>
-      <home/>
-      <create-task/>
-      <list-tasks/>
-      <admin-dashboard/>
-      <add-user/>
+      <login/> <br/>
+      <home/> <br/>
+      <create-task/> <br/>
+      <list-tasks/> <br/>
+      <admin-dashboard/> <br/>
+      <add-user/> <br/>
       </v-container>
     </v-main>
   </v-app>
