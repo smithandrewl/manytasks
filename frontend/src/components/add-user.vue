@@ -1,5 +1,5 @@
 <template>
-<b>login</b>
+  <b>Add User</b>
 </template>
 
 <script lang="ts">

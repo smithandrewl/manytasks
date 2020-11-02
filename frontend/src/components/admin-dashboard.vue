@@ -1,5 +1,5 @@
 <template>
-<b>login</b>
+  <b>Admin Dashboard</b>
 </template>
 
 <script lang="ts">
