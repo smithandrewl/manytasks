@@ -6,13 +6,22 @@
     <v-container>
       <v-row>
         <v-col cols="1">
-          <v-btn color="success">Add a User</v-btn>
+          <v-btn color="primary">Logout</v-btn>
         </v-col>
       </v-row>
+
       <v-row>
         <v-col cols="12">
           <v-card>
             <v-card-title>Users</v-card-title>
+
+            <v-container>
+            <v-row>
+              <v-col cols="1">
+                <v-btn color="success">Add a User</v-btn>
+              </v-col>
+            </v-row>
+            </v-container>
 
             <v-simple-table>
               <thead>
@@ -26,7 +35,7 @@
               <tr>
                 <td>Username</td>
                 <td>isAdmin</td>
-                <td>Delete</td>
+                <td><v-btn color="error">x</v-btn></td>
               </tr>
               </tbody>
             </v-simple-table>
@@ -34,16 +43,18 @@
         </v-col>
       </v-row>
 
-      <v-row>
-        <v-col cols="1">
-          <v-btn color="error">Clear All Logs</v-btn>
-        </v-col>
-      </v-row>
+
       <v-row>
         <v-col cols="12">
           <v-card>
             <v-card-title>Events</v-card-title>
-
+            <v-container>
+            <v-row>
+              <v-col cols="1">
+                <v-btn color="error">Clear All Logs</v-btn>
+              </v-col>
+            </v-row>
+            </v-container>
             <v-simple-table>
               <thead>
               <tr>
