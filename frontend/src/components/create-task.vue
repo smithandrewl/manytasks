@@ -17,7 +17,7 @@
           <v-btn color="primary">Add</v-btn>
         </v-col>
         <v-col cols="1">
-          <v-btn>Cancel</v-btn>
+          <v-btn to="/home">Cancel</v-btn>
         </v-col>
       </v-row>
     </v-container>

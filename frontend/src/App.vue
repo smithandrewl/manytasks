@@ -2,12 +2,8 @@
   <v-app>
     <v-main>
       <v-container>
-      <login/> <br/>
-      <home/> <br/>
-      <create-task/> <br/>
-      <list-tasks/> <br/>
-      <admin-dashboard/> <br/>
-      <add-user/> <br/>
+        <router-view></router-view>
+
       </v-container>
     </v-main>
   </v-app>

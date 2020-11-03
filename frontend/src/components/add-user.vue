@@ -5,7 +5,7 @@
     <v-container>
       <v-row>
         <v-col cols="1">
-          <v-btn color="primary">Back</v-btn>
+          <v-btn color="primary" to="/adminDashboard">Back</v-btn>
         </v-col>
       </v-row>
       <v-row>

@@ -6,7 +6,7 @@
     <v-container>
       <v-row>
         <v-col cols="1">
-          <v-btn color="primary">Logout</v-btn>
+          <v-btn color="primary" to="/home">Back</v-btn>
         </v-col>
       </v-row>
 
@@ -18,7 +18,7 @@
             <v-container>
             <v-row>
               <v-col cols="1">
-                <v-btn color="success">Add a User</v-btn>
+                <v-btn color="success" to="/addUser">Add a User</v-btn>
               </v-col>
             </v-row>
             </v-container>

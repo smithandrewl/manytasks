@@ -15,7 +15,7 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-        <v-btn color="primary">Sign In</v-btn>
+        <v-btn color="primary" to="/home">Sign In</v-btn>
         </v-col>
       </v-row>
     </v-container>
